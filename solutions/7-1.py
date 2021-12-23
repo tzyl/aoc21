@@ -8,9 +8,8 @@ def calculate_fuel_cost(positions: list[int]):
 
 
 def median(xs: list[int]):
-    sorted = [x for x in xs]
-    sorted.sort()
-    return (sorted[(len(sorted) - 1) // 2] + sorted[len(sorted) // 2]) / 2
+    sorted_xs = sorted(xs)
+    return (sorted_xs[(len(sorted_xs) - 1) // 2] + sorted_xs[len(sorted_xs) // 2]) / 2
 
 
 if __name__ == "__main__":
