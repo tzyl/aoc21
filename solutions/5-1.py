@@ -15,16 +15,11 @@ def parse_line_coordinates(f) -> list[tuple[Coordinates, Coordinates]]:
 
 
 def mark_line_coordinates(x: int, y: int, to_mark):
-    key = make_key(x, y)
-    existing = to_mark.get(key)
+    existing = to_mark.get((x, y))
     if existing is None:
-        to_mark[key] = 1
+        to_mark[(x, y)] = 1
     else:
-        to_mark[key] = existing + 1
-
-
-def make_key(x, y):
-    return f"{x}-{y}"
+        to_mark[(x, y)] = existing + 1
 
 
 def count_most_dangerous_areas(
