@@ -20,7 +20,7 @@ def find_basin_size(heightmap: list[list[int]], low_point: tuple[int, int]) -> i
     n = len(heightmap[0])
     basin: set[tuple[int, int]] = set([low_point])
     to_visit: list[tuple[int, int]] = [low_point]
-    while len(to_visit) > 0:
+    while to_visit:
         i, j = to_visit.pop()
         for x, y in get_neighbours(i, j, m, n):
             if (
