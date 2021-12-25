@@ -3,7 +3,7 @@ import os
 from dataclasses import dataclass, field
 
 
-@dataclass
+@dataclass(frozen=True)
 class Packet:
     version: int
     type_id: int

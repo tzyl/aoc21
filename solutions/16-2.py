@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from math import prod
 
 
-@dataclass
+@dataclass(frozen=True)
 class Packet:
     version: int
     type_id: int
