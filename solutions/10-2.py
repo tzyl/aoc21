@@ -43,7 +43,7 @@ def find_completion_string(line: str) -> str | None:
             if CLOSE_CHUNK_TO_OPEN_CHUNK[c] != open_chunk:
                 # Corrupt line cannot be completed
                 return None
-    return "".join(OPEN_CHUNK_TO_CLOSE_CHUNK[c] for c in reversed(open_chunks))
+    return "".join(OPEN_CHUNK_TO_CLOSE_CHUNK[c] for c in open_chunks[::-1])
 
 
 if __name__ == "__main__":
