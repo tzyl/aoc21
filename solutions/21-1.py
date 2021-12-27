@@ -53,5 +53,4 @@ if __name__ == "__main__":
     player1_score, player2_score, number_of_rolls = play_dirac_dice(
         player1_start, player2_start, deterministic_dice.roll
     )
-    print(player1_score, player2_score, number_of_rolls)
     print(min(player1_score, player2_score) * number_of_rolls)

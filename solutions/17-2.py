@@ -3,7 +3,9 @@ import os
 import re
 
 INPUT_REGEX_PATTERN = re.compile(
-    r"target area: x=(?P<min_x>\d+)\.\.(?P<max_x>\d+), y=(?P<min_y>-?\d+)..(?P<max_y>-?\d+)"
+    r"target area: "
+    r"x=(?P<min_x>\d+)\.\.(?P<max_x>\d+), "
+    r"y=(?P<min_y>-?\d+)..(?P<max_y>-?\d+)"
 )
 
 
