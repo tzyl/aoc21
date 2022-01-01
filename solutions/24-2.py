@@ -114,18 +114,27 @@ class ALU:
 
 def parse_instruction(line: str) -> Instruction:
     tokens = line.strip().split(" ")
+    left = parse_variable(tokens[1])
     if tokens[0] == "inp":
-        return ("inp", parse_variable(tokens[1]))
+        inp_instruction: InpInstruction = ("inp", left)
+        return inp_instruction
+
+    right = parse_variable_or_int(tokens[2])
     if tokens[0] == "add":
-        return ("add", parse_variable(tokens[1]), parse_variable_or_int(tokens[2]))
+        add_instruction: AddInstruction = ("add", left, right)
+        return add_instruction
     elif tokens[0] == "mul":
-        return ("mul", parse_variable(tokens[1]), parse_variable_or_int(tokens[2]))
+        mul_instruction: MulInstruction = ("mul", left, right)
+        return mul_instruction
     elif tokens[0] == "div":
-        return ("div", parse_variable(tokens[1]), parse_variable_or_int(tokens[2]))
+        div_instruction: DivInstruction = ("div", left, right)
+        return div_instruction
     elif tokens[0] == "mod":
-        return ("mod", parse_variable(tokens[1]), parse_variable_or_int(tokens[2]))
+        mod_instruction: ModInstruction = ("mod", left, right)
+        return mod_instruction
     elif tokens[0] == "eql":
-        return ("eql", parse_variable(tokens[1]), parse_variable_or_int(tokens[2]))
+        eql_instruction: EqlInstruction = ("eql", left, right)
+        return eql_instruction
     raise ValueError(f"Unexpected token {tokens[0]} when parsing operation")
 
 
@@ -250,45 +259,45 @@ if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(__file__), "../inputs/input24.txt")) as f:
         program = [parse_instruction(line) for line in f]
 
-    # Smallest possible number:
+    # Lowest possible number:
     #
     # w5 = w4 - 6
-    #  -> w4 = 9, w5 = 3
-    w4 = 9
-    w5 = 3
+    #  -> w4 = 7, w5 = 1
+    w4 = 7
+    w5 = 1
     # w8 = w7
-    #  -> w7 = 9, w8 = 9
-    w7 = 9
-    w8 = 9
+    #  -> w7 = 1, w8 = 1
+    w7 = 1
+    w8 = 1
     # w10 = w9 + 7
-    #  -> w9 = 2, w10 = 9
-    w9 = 2
-    w10 = 9
+    #  -> w9 = 1, w10 = 8
+    w9 = 1
+    w10 = 8
     # w11 = w6 - 8
     #  -> w6 = 9, w11 = 1
     w6 = 9
     w11 = 1
     # w12 = w3 + 1
-    #  -> w3 = 8, w12 = 9
-    w3 = 8
-    w12 = 9
+    #  -> w3 = 1, w12 = 2
+    w3 = 1
+    w12 = 2
     # w13 = w2 - 3
-    #  -> w2 = 9, w13 = 6
-    w2 = 9
-    w13 = 6
+    #  -> w2 = 4, w13 = 1
+    w2 = 4
+    w13 = 1
     # w14 = w1 - 2
-    #  -> w1 = 9, w14 = 7
-    w1 = 9
-    w14 = 7
+    #  -> w1 = 3, w14 = 1
+    w1 = 3
+    w14 = 1
 
-    highest_valid_number = int(
+    lowest_valid_number = int(
         "".join(
             str(c)
             for c in (w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11, w12, w13, w14)
         )
     )
-    if not is_model_number_valid(program, highest_valid_number):
+    if not is_model_number_valid(program, lowest_valid_number):
         raise ValueError("Expected model number to be valid")
-    elif not is_model_number_valid_formula(highest_valid_number):
+    elif not is_model_number_valid_formula(lowest_valid_number):
         raise ValueError("Expected model number to be valid")
-    print(highest_valid_number)
+    print(lowest_valid_number)
