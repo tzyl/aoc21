@@ -4,7 +4,12 @@ import os
 
 def calculate_fuel_cost_part_one(positions: list[int]) -> float:
     median_position = median(positions)
-    return sum(abs(position - median_position) for position in positions)
+    median_floor = int(median_position)
+    median_ceil = int(median_position + 1)
+    return min(
+        sum(abs(position - median_floor) for position in positions),
+        sum(abs(position - median_ceil) for position in positions),
+    )
 
 
 def median(xs: list[int]) -> float:
@@ -13,9 +18,12 @@ def median(xs: list[int]) -> float:
 
 
 def calculate_fuel_cost_part_two(positions: list[int]) -> int:
+    mean = sum(x for x in positions) / len(positions)
+    mean_floor = int(mean)
+    mean_ceil = int(mean + 1)
     return min(
-        sum(triangle_number(abs(x - i)) for x in positions)
-        for i in range(min(positions), max(positions) + 1)
+        sum(triangle_number(abs(x - mean_floor)) for x in positions),
+        sum(triangle_number(abs(x - mean_ceil)) for x in positions),
     )
 
 
