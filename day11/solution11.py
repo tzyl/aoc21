@@ -4,17 +4,19 @@ from typing import Generator
 
 
 def count_flashes(energy_levels: list[list[int]], steps: int) -> int:
+    to_step = [[energy_levels[i][j] for j in range(10)] for i in range(10)]
     total_flashes = 0
     for _ in range(steps):
-        flashed = step(energy_levels)
+        flashed = step(to_step)
         total_flashes += len(flashed)
     return total_flashes
 
 
 def count_steps_until_synchronized(energy_levels: list[list[int]]) -> int:
+    to_step = [[energy_levels[i][j] for j in range(10)] for i in range(10)]
     steps = 0
-    while not is_synchronized(energy_levels):
-        step(energy_levels)
+    while not is_synchronized(to_step):
+        step(to_step)
         steps += 1
     return steps
 
