@@ -42,7 +42,7 @@ def step(energy_levels: list[list[int]]) -> set[tuple[int, int]]:
                     new_flashes.add((i, j))
 
         for i, j in new_flashes:
-            for x, y in get_neighbours(i, j):
+            for x, y in get_neighbors(i, j):
                 energy_levels[x][y] += 1
 
         if not new_flashes:
@@ -54,7 +54,7 @@ def step(energy_levels: list[list[int]]) -> set[tuple[int, int]]:
     return flashed
 
 
-def get_neighbours(i: int, j: int) -> Generator[tuple[int, int], None, None]:
+def get_neighbors(i: int, j: int) -> Generator[tuple[int, int], None, None]:
     offsets = [(0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1)]
     for dx, dy in offsets:
         if 0 <= i + dx < 10 and 0 <= j + dy < 10:

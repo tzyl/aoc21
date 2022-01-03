@@ -259,7 +259,7 @@ if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(__file__), "input24.txt")) as f:
         program = [parse_instruction(line) for line in f]
 
-    # Higest possible number:
+    # Highest possible number:
     #
     # w5 = w4 - 6
     #  -> w4 = 9, w5 = 3

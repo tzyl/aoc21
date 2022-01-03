@@ -33,9 +33,9 @@ def find_all_paths(adjacency_list: dict[str, set[str]]) -> list[list[str]]:
         if node == "end":
             all_paths.append(current_path)
 
-        for neighbour in adjacency_list[node]:
-            if is_big_cave(neighbour) or neighbour not in current_path:
-                to_visit.append((neighbour, current_path))
+        for neighbor in adjacency_list[node]:
+            if is_big_cave(neighbor) or neighbor not in current_path:
+                to_visit.append((neighbor, current_path))
     return all_paths
 
 
@@ -56,15 +56,13 @@ def find_all_paths_one_small_cave_at_most_twice(
         if node == "end":
             all_paths.append(current_path)
 
-        for neighbour in adjacency_list[node]:
-            if is_big_cave(neighbour):
-                to_visit.append((neighbour, current_path, small_cave_twice))
-            elif neighbour not in current_path:
-                to_visit.append((neighbour, current_path, small_cave_twice))
-            elif (
-                small_cave_twice is None and neighbour != "start" and neighbour != "end"
-            ):
-                to_visit.append((neighbour, current_path, neighbour))
+        for neighbor in adjacency_list[node]:
+            if is_big_cave(neighbor):
+                to_visit.append((neighbor, current_path, small_cave_twice))
+            elif neighbor not in current_path:
+                to_visit.append((neighbor, current_path, small_cave_twice))
+            elif small_cave_twice is None and neighbor != "start" and neighbor != "end":
+                to_visit.append((neighbor, current_path, neighbor))
     return all_paths
 
 

@@ -36,7 +36,7 @@ def find_lowest_total_risk_path(risk_levels: list[list[int]]) -> list[tuple[int,
     while priority_queue:
         current_distance, (i, j) = heapq.heappop(priority_queue)
         visited[i][j] = True
-        for x, y in get_neighbours(i, j, m, n):
+        for x, y in get_neighbors(i, j, m, n):
             if not visited[x][y]:
                 candidate_distance = current_distance + risk_levels[x][y]
                 if candidate_distance < distances[x][y]:
@@ -52,7 +52,7 @@ def find_lowest_total_risk_path(risk_levels: list[list[int]]) -> list[tuple[int,
     return lowest_total_risk_path[::-1]
 
 
-def get_neighbours(
+def get_neighbors(
     i: int, j: int, m: int, n: int
 ) -> Generator[tuple[int, int], None, None]:
     offsets = [(0, 1), (1, 0), (0, -1), (-1, 0)]

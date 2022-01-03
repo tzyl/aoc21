@@ -26,7 +26,7 @@ def find_basin_size(heightmap: list[list[int]], low_point: tuple[int, int]) -> i
     to_visit: list[tuple[int, int]] = [low_point]
     while to_visit:
         i, j = to_visit.pop()
-        for x, y in get_neighbours(i, j, m, n):
+        for x, y in get_neighbors(i, j, m, n):
             if (
                 heightmap[x][y] != 9
                 and heightmap[x][y] > heightmap[i][j]
@@ -47,11 +47,11 @@ def is_low_point(heightmap: list[list[int]], i: int, j: int) -> bool:
     m = len(heightmap)
     n = len(heightmap[0])
     return all(
-        heightmap[x][y] > heightmap[i][j] for (x, y) in get_neighbours(i, j, m, n)
+        heightmap[x][y] > heightmap[i][j] for (x, y) in get_neighbors(i, j, m, n)
     )
 
 
-def get_neighbours(
+def get_neighbors(
     i: int, j: int, m: int, n: int
 ) -> Generator[tuple[int, int], None, None]:
     if i > 0:
