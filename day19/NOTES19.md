@@ -43,9 +43,9 @@ Consider the existing map:
 E - existing scanner
 # - existing beacon
 
-  ##     #
+         #
   ## E  #
-  ##    #
+        #
 ```
 
 Here are three attempts at trying to find 3 overlapping points from the scanner
@@ -60,9 +60,9 @@ x - beacon overlap
 
   Attempt 1       Attempt 2       Attempt 3
 
-  ##     x.       ##     #        ##     #
+         x.              #               #
   ## E  #  .      ## E  x.        ## E  #
-  ##    # S       ##    # .       ##    x.
+        # S             # .             x.
           .              S                .
                          .               S
                                          .
@@ -79,9 +79,9 @@ x - beacon overlap
 
   Correct attempt
 
-  ##     x
+         x
   ## E  x S.
-  ##    x
+        x
 ```
 
 Our new map becomes:
@@ -90,9 +90,9 @@ Our new map becomes:
 E - existing scanner
 # - existing beacon
 
-  ##     #
+         #
   ## E  # E#
-  ##    #
+        #
 ```
 
 We repeat the process until all scanners have been matched onto the map.

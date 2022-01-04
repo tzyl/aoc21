@@ -39,7 +39,7 @@ the position `x` to the right by one. We have:
 
 ```text
 -abs(x_i - x) if x_i > x (moving closer to positions on the right)
-abs(x_i - x)  if x_i < x (moving closer to positions on the left)
+abs(x_i - x)  if x_i < x (moving away from positions on the left)
 = x - x_i
 ```
 

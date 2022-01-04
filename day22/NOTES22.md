@@ -63,8 +63,8 @@ With this structure in hand we can tackle the problem:
 - Iterate through the input cuboids
 - If we are turning off the cuboid remove all existing cuboids and add all the
 smaller cuboids from removing the cuboid from each existing cuboid
-- If we are turning on the cuboid first turn it off using the above step to
-and then add the cuboid to guarantee that there are no overlapping cuboids
+- If we are turning on the cuboid first turn it off using the above step and
+then add the cuboid to guarantee that there are no overlapping cuboids
 
 The volume of cubes on can then be simply calculated from summing the volume
 of all cuboids left at the end.
